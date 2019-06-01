@@ -2,6 +2,11 @@
 #include <getopt.h>
 #include "libamin/src/amin.h"
 
+void parseStdIn(std::string profile) {
+    Amin amin;
+    amin.parse(profile.c_str());
+}
+
 int main(int argc, char **argv) {
 
     std::cout << "Welcome to Amin version 1.0" << std::endl;
@@ -24,13 +29,14 @@ int main(int argc, char **argv) {
                 while (std::cin >> profile) {
                     std::cout << profile;
                 }
-                Amin amin;
-                amin.parse(profile.c_str());
+                parseStdIn(profile);
                 break;
             case 'h':
                 std::cout << "Help to come!" << std::endl;
+                break;
             default:
                 std::cout << "Unknown option" << std::endl;
+                break;
         }
     }
 

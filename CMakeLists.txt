@@ -9,20 +9,19 @@ set(CAMIN_VERSION_STRING ${CAMIN_VERSION_MAJOR}.${CAMIN_VERSION_MINOR}.${CAMIN_V
 set(CMAKE_CXX_STANDARD 14)
 
 find_package(PkgConfig)
-pkg_check_modules(LIBXML2 libxml-2.0)
+find_package(LibXml2 REQUIRED)
 
 add_subdirectory(libamin)
 
-link_directories(
-        libamin
-)
+link_directories(libamin)
 
-include_directories(
-        libamin
-)
-
+include_directories(libamin)
 
 add_executable(camin camin.cpp)
+
+include_directories(camin PUBLIC ${LIBXML2_INCLUDE_DIRS})
+link_libraries(camin ${LIBXML2_LIBRARIES})
+
 target_link_libraries(camin amin)
 
 install(TARGETS camin DESTINATION bin)
