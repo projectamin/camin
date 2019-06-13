@@ -10,7 +10,7 @@ void parseStdIn(std::string profile) {
 int main(int argc, char **argv) {
 
     std::cout << "Welcome to Amin version 1.0" << std::endl;
-    std::cout << "Today brought to you by caffiene and MoonAlice(tm)..." << std::endl;
+    std::cout << "Today brought to you by learning and Phish(tm)..." << std::endl;
 
     std::string uri;
     // TODO This is ass needs to pass fd to parser.
@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
                 parseStdIn(profile);
                 break;
             case 'h':
-                std::cout << "Help to come!" << std::endl;
+                std::cout << "Help is here!" << std::endl;
                 break;
             default:
                 std::cout << "Unknown option" << std::endl;
