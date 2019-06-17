@@ -10,7 +10,7 @@ void parseStdIn(std::string profile) {
 int main(int argc, char **argv) {
 
     std::cout << "Welcome to Amin version 1.0" << std::endl;
-    std::cout << "Today brought to you by learning and Phish(tm)..." << std::endl;
+    std::cout << "Today brought to you by Learning and Phish(tm) @ Bonnaroo..." << std::endl;
 
     std::string uri;
     // TODO This is ass needs to pass fd to parser.
