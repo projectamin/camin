@@ -3,7 +3,7 @@
 #include "libamin/src/amin.h"
 
 void parseStdIn(std::string profile) {
-    Amin amin;
+    Amin::Amin amin;
     amin.parse(profile);
 }
 

@@ -1,4 +1,4 @@
-set ( SRC_FILES src/amin.cpp src/xml/xml_base.cpp src/xml/xml_base.h)
+set ( SRC_FILES src/amin.cpp src/xml/sax/xml_base.cpp src/xml/sax/xml_base.h src/amin/elt.cpp src/amin/elt.h)
 
 add_library(amin SHARED ${SRC_FILES})
 

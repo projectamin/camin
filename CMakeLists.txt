@@ -9,7 +9,8 @@ set(CAMIN_VERSION_STRING ${CAMIN_VERSION_MAJOR}.${CAMIN_VERSION_MINOR}.${CAMIN_V
 set(CMAKE_CXX_STANDARD 14)
 
 find_package(PkgConfig)
-find_package(LibXml2 REQUIRED)
+
+pkg_search_module(LIBXML2 libxml++-2.6)
 
 add_subdirectory(libamin)
 
