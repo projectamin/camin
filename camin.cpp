@@ -4,7 +4,7 @@
 
 void parseStdIn(std::string profile) {
     Amin amin;
-    amin.parse(profile.c_str());
+    amin.parse(profile);
 }
 
 int main(int argc, char **argv) {
@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
                 std::cout << uri << std::endl;
                 break;
             case 'p':
-                while (std::cin >> profile) {
+                while (std::getline(std::cin, profile)) {
                     std::cout << profile;
                 }
                 parseStdIn(profile);

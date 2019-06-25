@@ -11,6 +11,6 @@ include_directories(
 )
 
 include_directories(amin PUBLIC ${LIBXML2_INCLUDE_DIRS})
-link_libraries(amin ${LIBXML2_LIBRARIES})
+target_link_libraries(amin ${LIBXML2_LIBRARIES})
 set_target_properties(amin PROPERTIES VERSION ${CAMIN_VERSION_STRING} SOVERSION ${CAMIN_VERSION_MAJOR})
 install(TARGETS amin DESTINATION lib)

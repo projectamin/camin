@@ -8,7 +8,7 @@ class Amin
     xmlSAXHandler saxHandler;
 public:
     Amin();
-    void parse(const char *profile);
+    void parse(const std::string& profile);
 private:
     void setupSaxHandler();
     static void onStartElement(
@@ -29,6 +29,9 @@ private:
             const xmlChar* URI
     );
     static void onCharacters(void *ctx, const xmlChar *ch, int len);
+    static void error( void * ctx,
+                  const char * msg,
+                  ... );
 };
 
 #endif
