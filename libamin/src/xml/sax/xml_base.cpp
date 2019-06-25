@@ -63,5 +63,30 @@ namespace Xml {
             SaxParser::on_fatal_error(text);
         }
 
+        ustring Base::get_prefix(const ustring &name) {
+            size_type position = name.find(":", size_type(1));
+            ustring prefix = name.substr(size_type(0), position);
+            std::cout << "Prefix: " << prefix << std::endl;
+            return prefix;
+        }
+
+        ustring Base::get_localname(const ustring &name) {
+            size_type position = name.find(":", size_type(1));
+            if(position == name.length()) {
+                return ustring();
+            }
+            ustring localname = name.substr(position, name.length());
+            std::cout << "LocalName: " << localname << std::endl;
+            return localname;
+        }
+
+        std::map<ustring, ustring> Base::get_attribute_map(const AttributeList &attributes) {
+            std::map<ustring, ustring> attribute_map;
+            for(const auto& attribute : attributes) {
+                attribute_map.insert({attribute.name.c_str(), attribute.value.c_str()});
+            }
+            return attribute_map;
+        }
+
     }
 }

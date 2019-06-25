@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <zconf.h>
 #include <iostream>
+#include <fstream>
 #include "machine_spec.h"
 #include "spec/document.h"
 
@@ -38,8 +39,33 @@ void Amin::Machine::MachineSpec::on_start_document() {
     std::cout << "Current Uri: " << current_uri << std::endl;
     Document documentHandler;
 
+    // TODO wire this up in base.
     try {
-        documentHandler.parse_file(current_uri);
+        std::ifstream is(current_uri.c_str());
+        if (!is)
+            throw xmlpp::exception("Could not open file " + current_uri);
+
+        char buffer[64];
+        const size_t buffer_size = sizeof(buffer) / sizeof(char);
+
+        documentHandler.set_substitute_entities(true);
+
+        do
+        {
+            memset(buffer, 0, buffer_size);
+            is.read(buffer, buffer_size-1);
+            if(is.gcount())
+            {
+                // We use Glib::ustring::ustring(InputIterator begin, InputIterator end)
+                // instead of Glib::ustring::ustring( const char*, size_type ) because it
+                // expects the length of the string in characters, not in bytes.
+                Glib::ustring input(buffer, buffer+is.gcount());
+                documentHandler.parse_chunk(input);
+            }
+        }
+        while(is);
+
+        documentHandler.finish_chunk_parsing();
     }
     catch(const xmlpp::exception& ex)
     {
