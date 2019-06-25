@@ -16,9 +16,10 @@ namespace Amin {
     namespace Machine {
         namespace Spec {
             class Document: public Base {
+                Filter *current_filter;
+                const ustring *current_element;
             public:
-                std::map<std::string, Filter> filters;
-                Filter currentFilter;
+                std::map<std::string, Filter*> filters;
                 ustring machine_name;
                 ustring generator;
                 ustring handler;
@@ -26,6 +27,9 @@ namespace Amin {
                 void on_start_document() override;
                 void on_start_element(const Glib::ustring& name,
                                       const AttributeList& properties) override;
+                void on_characters(const ustring& characters) override;
+                void on_end_element(const ustring& name) override;
+                void on_end_document() override;
             };
         }
     }
