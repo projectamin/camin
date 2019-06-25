@@ -9,7 +9,7 @@ namespace Amin {
         xmlSAXHandler saxHandler{};
     public:
         Amin();
-        void parse(const std::string& profile);
+        void parse(const std::string *profile);
     private:
 
     };

@@ -15,12 +15,15 @@ namespace Amin {
         ustring flag[1];
         ustring source[1];
         ustring param[1];
+        ustring prefix;
+        ustring localname;
         ustring command;
         ustring command_name;
         xmlpp::SaxParser::AttributeList attributes;
         ustring environment_variables[1];
         ustring element;
     public:
+        using Base::Base;
         void on_start_element(const Glib::ustring& name,
                               const xmlpp::SaxParser::AttributeList& properties) override;
     };

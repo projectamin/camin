@@ -2,18 +2,20 @@
 #include <cstring>
 #include "amin.h"
 #include "amin/elt.h"
+#include "amin/machine/machine_spec.h"
 #include <libxml++/libxml++.h>
 
 using xmlpp::SaxParser;
 using Glib::ustring;
 using Amin::Elt;
+using Amin::Machine::MachineSpec;
 namespace Amin {
     Amin::Amin() {
         std::cout << "Constructor called!" << std::endl;
 
     }
 
-    void Amin::parse(const std::string& profile) {
+    void Amin::parse(const std::string *profile) {
 
         std::cout << profile << std::endl;
 
@@ -27,8 +29,10 @@ namespace Amin {
 
         // Wire up parser - Just testing atm.
         try {
-            Xml::Sax::Base handler;
-            handler.parse_memory(ustring(aminXml));
+            MachineSpec machine_spec_handler;
+            Elt elt;
+            elt.handler = &machine_spec_handler;
+            elt.parse_memory(ustring(aminXml));
         }
         catch(const xmlpp::exception& ex)
         {

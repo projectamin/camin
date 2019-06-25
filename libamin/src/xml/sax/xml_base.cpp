@@ -9,9 +9,7 @@
 namespace Xml {
     namespace Sax {
 
-        Base::Base() {
-
-        }
+        Base::Base() = default;
 
         Base::Base(Xml::Sax::Base *handler) {
             this->handler = handler;
@@ -19,6 +17,9 @@ namespace Xml {
 
         void Base::on_start_document() {
             std::cout << "start document" << std::endl;
+            if(this->handler != nullptr) {
+                this->handler->on_start_document();
+            }
             SaxParser::on_start_document();
         }
 

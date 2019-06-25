@@ -1,0 +1,574 @@
+<machine xmlns:amin='http://projectamin.org/ns/'>
+	<!--	LICENSE:
+	        Please see the LICENSE file included with this distribution
+		or see the following website http://projectamin.org.
+	-->
+
+
+	<!--what type of machine is this? -->
+	<name>Amin::Machine::Dispatcher</name>
+
+	<!-- default generator handler log and filter_param
+	<generator name='XML::SAX::PurePerl'/>
+
+
+	<handler name='Amin::Machine::Handler::Writer' output='int' />
+
+
+	<log name='Amin::Machine::Log::Standard' />
+	-->
+	<!--<filter_param>something_here somethings else</filter_param>-->
+
+
+	<!-- some special/extra amin filters that fit nowhere in particular-->
+
+	<filter name='Amin::Chroot'>
+		<element>chroot</element>
+		<namespace>amin</namespace>
+		<name>chroot</name>
+		<position>begin</position>
+		<download>http://projectamin.org/filters/amin/command/chroot.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Depend'>
+		<element>depend</element>
+		<namespace>amin</namespace>
+		<name>depend</name>
+		<position>begin</position>
+		<download>http://projectamin.org/filters/amin/command/depend.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Download'>
+		<element>download</element>
+		<namespace>amin</namespace>
+		<name>download</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/download.xml</download>
+		<version>1.0</version>
+	</filter>
+
+	<!-- Amin Cond filters -->
+
+	<filter name='Amin::Cond::Arch'>
+		<element>cond</element>
+		<namespace>amin</namespace>
+		<name>arch</name>
+		<position>begin</position>
+		<download>http://projectamin.org/filters/amin/command/arch.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Cond::Archu'>
+		<element>cond</element>
+		<namespace>amin</namespace>
+		<name>archu</name>
+		<position>begin</position>
+		<download>http://projectamin.org/filters/amin/command/archu.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Cond::Hostname'>
+		<element>cond</element>
+		<namespace>amin</namespace>
+		<name>hostname</name>
+		<position>begin</position>
+		<download>http://projectamin.org/filters/amin/command/hostname.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Cond::Os'>
+		<element>cond</element>
+		<namespace>amin</namespace>
+		<name>os</name>
+		<position>begin</position>
+		<download>http://projectamin.org/filters/amin/command/os.xml</download>
+		<version>1.0</version>
+	</filter>
+
+	<!-- Amin Command filters -->
+
+	<filter name='Amin::Command::Amin'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>amin</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/amin.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Cat'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>cat</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/cat.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Chgrp'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>chgrp</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/chgrp.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Chmod'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>chmod</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/chmod.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Chown'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>chown</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/chown.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Configure'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>configure</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/configure.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Copy'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>copy</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/copy.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Cp'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>cp</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/cp.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Df'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>df</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/df.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Du'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>du</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/du.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Echo'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>echo</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/echo.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Fsck'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>fsck</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/fsck.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Gcc_dumpspecs'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>gcc_dumpspecs</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/gcc_dumpspecs.xml</download>
+		<version>1.0</version>
+	</filter>
+        <filter name='Amin::Command::Gmake'>
+                <element>command</element>
+                <namespace>amin</namespace>
+                <name>gmake</name>
+                <position>middle</position>
+                <download>http://projectamin.org/filters/amin/command/gmake.xml</download>
+                <version>1.0</version>
+        </filter>
+	<filter name='Amin::Command::Groupadd'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>groupadd</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/groupadd.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Groupdel'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>groupdel</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/groupdel.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Grpconv'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>grpconv</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/grpconv.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Grpunconv'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>grpunconv</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/grpunconv.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Head'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>head</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/head.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Hostname'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>hostname</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/hostname.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Ifconfig'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>ifconfig</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/ifconfig.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Iptables'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>iptables</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/iptables.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Kill'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>kill</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/kill.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Ldconfig'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>ldconfig</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/ldconfig.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Link'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>link</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/link.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Ln'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>ln</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/ln.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Ls'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>ls</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/ls.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Make'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>make</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/make.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Makewhatis'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>makewhatis</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/makewhatis.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Mkdir'>
+		<namespace>amin</namespace>
+		<element>command</element>
+		<name>mkdir</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/mkdir.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Mknod'>
+		<namespace>amin</namespace>
+		<element>command</element>
+		<name>mknod</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/mknod.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Mount'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>mount</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/mount.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Move'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>move</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/move.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Mv'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>mv</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/mv.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Patch'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>patch</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/patch.xml</download>
+		<version>1.0</version>
+	</filter>
+<!--
+	<filter name='Amin::Command::Pconfigure'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>pconfigure</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/pconfigure.xml</download>
+		<version>1.0</version>
+	</filter>
+-->
+	<filter name='Amin::Command::Pwconv'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>pwconv</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/pwconv.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Pwunconv'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>pwunconv</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/pwunconv.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Remove'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>remove</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/remove.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Rm'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>rm</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/rm.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Rmdir'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>rmdir</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/rmdir.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Route'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>route</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/route.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Rpm'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>rpm</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/move.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Rsync'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>rsync</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/rsync.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Search_replace'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>search_replace</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/search_replace.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::System_command'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>system_command</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/system_command.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Tail'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>tail</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/tail.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Textdump'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>textdump</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/textdump.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Touch'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>touch</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/touch.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Umount'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>umount</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/umount.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Unpack'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>unpack</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/unpack.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Unzip'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>unzip</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/unzip.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Amin::Command::Userdel'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>userdel</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/userdel.xml</download>
+		<version>1.0</version>
+	</filter>
+	<!--
+	<filter name='Amin::Command::Yes'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>yes</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/yes.xml</download>
+		<version>1.0</version>
+	</filter>
+	-->
+	<filter name='Amin::Command::Zip'>
+		<element>command</element>
+		<namespace>amin</namespace>
+		<name>zip</name>
+		<position>middle</position>
+		<download>http://projectamin.org/filters/amin/command/zip.xml</download>
+		<version>1.0</version>
+	</filter>
+
+	<!-- moved to their own included xml file????? -->
+
+	<filter name='Adistro::Stage'>
+		<element>stage</element>
+		<namespace>adistro</namespace>
+		<name>stage</name>
+		<position>begin</position>
+		<download>http://adistro.com/filters/adistro/stage.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Ainit::Stage'>
+		<element>stage</element>
+		<namespace>ainit</namespace>
+		<name>stage</name>
+		<position>begin</position>
+		<download>http://adistro.com/filters/ainit/stage.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Ainit::Command::Kill'>
+		<element>command</element>
+		<namespace>ainit</namespace>
+		<name>kill</name>
+		<position>middle</position>
+		<download>http://adistro.com/filters/ainit/command/kill.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Ainit::Command::Killall'>
+		<element>command</element>
+		<namespace>ainit</namespace>
+		<name>killall</name>
+		<position>middle</position>
+		<download>http://adistro.com/filters/ainit/command/killall.xml</download>
+		<version>1.0</version>
+	</filter>
+	<filter name='Ainit::Command::Status'>
+		<element>command</element>
+		<namespace>ainit</namespace>
+		<name>status</name>
+		<position>middle</position>
+		<download>http://adistro.com/filters/ainit/command/status.xml</download>
+		<version>1.0</version>
+	</filter>
+</machine>
