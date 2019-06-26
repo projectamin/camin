@@ -7,13 +7,10 @@
 
 void Amin::Machine::Spec::Document::on_start_document() {
     this->filters.clear();
-    std::cout << "DOCUMENT ON START" << std::endl;
 }
 
 void Amin::Machine::Spec::Document::on_start_element(const Glib::ustring &name,
                                                      const xmlpp::SaxParser::AttributeList &properties) {
-
-    std::cout << "DOCUMENT ON START ELEMENT" << std::endl;
 
     std::map<ustring, ustring> attributes = get_attribute_map(properties);
 
@@ -31,8 +28,6 @@ void Amin::Machine::Spec::Document::on_start_element(const Glib::ustring &name,
 }
 
 void Amin::Machine::Spec::Document::on_characters(const ustring &characters) {
-
-    std::cout << "DOCUMENT ON CHARS" << std::endl;
 
     if(strcmp(this->current_element->c_str(), "element") == 0) {
         this->current_filter->element = characters;
@@ -62,9 +57,4 @@ void Amin::Machine::Spec::Document::on_end_element(const ustring &name) {
 
 void Amin::Machine::Spec::Document::on_end_document() {
     std::cout << "Filters Count: " << this->filters.size() << std::endl;
-    for (auto const& x : this->filters)
-    {
-        std::cout << x.first  // string (key)
-                  << std::endl ;
-    }
 }

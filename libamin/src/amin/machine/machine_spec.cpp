@@ -66,6 +66,7 @@ void Amin::Machine::MachineSpec::on_start_document() {
         while(is);
 
         documentHandler.finish_chunk_parsing();
+        this->filters = documentHandler.filters;
     }
     catch(const xmlpp::exception& ex)
     {

@@ -15,7 +15,7 @@ namespace Amin {
         class MachineSpec : public Base {
         public:
             ustring uri;
-            std::vector<Filter> filters;
+            std::map<std::string, Filter*> filters;
             void on_start_document() override;
 
         };

@@ -19,6 +19,7 @@ namespace Amin {
                 Filter *current_filter;
                 const ustring *current_element;
             public:
+                // TODO create class / struct to wrap these and leave filter to do such.
                 std::map<std::string, Filter*> filters;
                 ustring machine_name;
                 ustring generator;
