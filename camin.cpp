@@ -17,6 +17,8 @@ int main(int argc, char **argv) {
     std::string profile;
 
     int c ;
+
+    // Please do not change, __MACH__ is hit with GNU Hurd etc and __OSX__ is not always defined.
 #ifdef __APPLE__
     while( ( c = getopt (argc, argv, "uph:") ) != -1 )
 #else

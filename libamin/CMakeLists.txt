@@ -1,4 +1,4 @@
-set ( SRC_FILES src/amin.cpp src/xml/sax/xml_base.cpp src/xml/sax/xml_base.h src/amin/elt.cpp src/amin/elt.h src/amin/machine/machine_spec.cpp src/amin/machine/machine_spec.h src/amin/machine/spec/document.cpp src/amin/machine/spec/document.h src/amin/machine/spec/filter.cpp src/amin/machine/spec/filter.h)
+set ( SRC_FILES src/amin.cpp src/xml/sax/xml_base.cpp src/xml/sax/xml_base.h src/amin/elt.cpp src/amin/elt.h src/amin/machine/machine_spec.cpp src/amin/machine/machine_spec.h src/amin/machine/spec/document.cpp src/amin/machine/spec/document.h src/amin/machine/spec/filter.cpp src/amin/machine/spec/filter.h src/amin/machine/handler/empty.cpp src/amin/machine/handler/empty.h src/amin/machine/handler/writer.cpp src/amin/machine/handler/writer.h)
 
 include_directories(amin PUBLIC ${LIBXMLCPP_INCLUDE_DIRS})
 
