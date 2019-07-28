@@ -4,9 +4,9 @@ CAmin is a C++ implementation of the Amin spec, intends to follow the current Pe
 as much as possible to allow machine and filter knowledge to be transferable.
 
 Requires: 
-libxml++
-libuv
-uriparser
+* libxml++
+* libuv
+* uriparser
 
 Build: 
 ```
