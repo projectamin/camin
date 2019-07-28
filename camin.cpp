@@ -17,7 +17,11 @@ int main(int argc, char **argv) {
     std::string profile;
 
     int c ;
+#ifdef __APPLE__
+    while( ( c = getopt (argc, argv, "uph:") ) != -1 )
+#else
     while( ( c = getopt (argc, argv, "u:p::h:") ) != -1 )
+#endif /* __APPLE__ */
     {
         switch(c)
         {
