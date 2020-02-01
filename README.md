@@ -1,6 +1,6 @@
 # camin
 
-CAmin is a C++ implementation of the Amin spec, intends to follow the current Perl design and implementaion patterns 
+CAmin is a C++ implementation of the Amin spec, intends to follow the current Perl design and implementation patterns 
 as much as possible to allow machine and filter knowledge to be transferable.
 
 Requires: 

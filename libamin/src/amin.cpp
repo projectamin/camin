@@ -15,9 +15,7 @@ namespace Amin {
 
     }
 
-    void Amin::parse(const std::string *profile) {
-
-        std::cout << profile << std::endl;
+    void Amin::parse(std::istream &profile) {
 
         std::string aminXml =
                 "<amin:profile xmlns:amin='http://projectamin.org/ns/'>"
@@ -32,7 +30,7 @@ namespace Amin {
             MachineSpec machine_spec_handler;
             Elt elt;
             elt.handler = &machine_spec_handler;
-            elt.parse_memory(ustring(aminXml));
+            elt.parse_stream(profile);
         }
         catch(const xmlpp::exception& ex)
         {

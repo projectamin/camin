@@ -7,7 +7,7 @@ namespace Amin {
     {
     public:
         Amin();
-        void parse(const std::string *profile);
+        static void parse(std::istream &profile);
     private:
 
     };

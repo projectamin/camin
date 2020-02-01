@@ -2,9 +2,8 @@
 #include <getopt.h>
 #include "libamin/src/amin.h"
 
-void parseStdIn(std::string *profile) {
-    Amin::Amin amin;
-    amin.parse(profile);
+void parseStdIn(std::istream &profile) {
+    Amin::Amin::parse(profile);
 }
 
 int main(int argc, char **argv) {
@@ -32,10 +31,7 @@ int main(int argc, char **argv) {
                 std::cout << uri << std::endl;
                 break;
             case 'p':
-                while (std::getline(std::cin, profile)) {
-                    std::cout << profile;
-                }
-                parseStdIn(&profile);
+                parseStdIn(std::cin);
                 break;
             case 'h':
                 std::cout << "Trying to help!" << std::endl;
