@@ -16,7 +16,7 @@ namespace Xml {
         }
 
         void Base::on_start_document() {
-            std::cout << "start document" << std::endl;
+            //std::cout << "start document" << std::endl;
             if(this->handler != nullptr) {
                 this->handler->on_start_document();
             }
@@ -24,27 +24,39 @@ namespace Xml {
         }
 
         void Base::on_end_document() {
-            std::cout << "end document" << std::endl;
+            //std::cout << "end document" << std::endl;
+            if(this->handler != nullptr) {
+                this->handler->on_end_document();
+            }
             SaxParser::on_end_document();
         }
 
         void Base::on_start_element(const Glib::ustring &name, const xmlpp::SaxParser::AttributeList &properties) {
-            std::cout << "start element" << std::endl;
+            //std::cout << "start element" << std::endl;
+            if(this->handler != nullptr) {
+                this->handler->on_start_element(name, properties);
+            }
             SaxParser::on_start_element(name, properties);
         }
 
         void Base::on_end_element(const Glib::ustring &name) {
-            std::cout << "end element" << std::endl;
+            //std::cout << "end element" << std::endl;
+            if(this->handler != nullptr) {
+                this->handler->on_end_element(name);
+            }
             SaxParser::on_end_element(name);
         }
 
         void Base::on_characters(const Glib::ustring &characters) {
-            std::cout << "chars" << std::endl;
+            //std::cout << "chars" << std::endl;
+            if(this->handler != nullptr) {
+                this->handler->on_characters(characters);
+            }
             SaxParser::on_characters(characters);
         }
 
         void Base::on_comment(const Glib::ustring &text) {
-            std::cout << "comment" << std::endl;
+            //std::cout << "comment" << std::endl;
             SaxParser::on_comment(text);
         }
 
@@ -66,7 +78,7 @@ namespace Xml {
         ustring Base::get_prefix(const ustring &name) {
             size_type position = name.find(":", size_type(1));
             ustring prefix = name.substr(size_type(0), position);
-            std::cout << "Prefix: " << prefix << std::endl;
+            //std::cout << "Prefix: " << prefix << std::endl;
             return prefix;
         }
 
@@ -76,7 +88,7 @@ namespace Xml {
                 return ustring();
             }
             ustring localname = name.substr(position, name.length());
-            std::cout << "LocalName: " << localname << std::endl;
+            //std::cout << "LocalName: " << localname << std::endl;
             return localname;
         }
 

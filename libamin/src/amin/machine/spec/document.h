@@ -16,7 +16,7 @@ namespace Amin {
     namespace Machine {
         namespace Spec {
             class Document: public Base {
-                Filter *current_filter;
+                Filter current_filter;
                 const ustring *current_element;
             public:
                 // TODO create class / struct to wrap these and leave filter to do such.

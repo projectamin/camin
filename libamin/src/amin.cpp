@@ -3,6 +3,7 @@
 #include "amin.h"
 #include "amin/elt.h"
 #include "amin/machine/machine_spec.h"
+#include "amin/machine/spec/document.h"
 #include <libxml++/libxml++.h>
 
 using xmlpp::SaxParser;
@@ -17,17 +18,13 @@ namespace Amin {
 
     void Amin::parse(std::istream &profile) {
 
-        std::string aminXml =
-                "<amin:profile xmlns:amin='http://projectamin.org/ns/'>"
-                "<amin:command name='mkdir'>"
-                "<amin:flag name='m'>0755</amin:flag>"
-                "<amin:param name='target'>/tmp/test_ashell</amin:param>"
-                "</amin:command></amin:profile>";
+        Machine::Spec::Document documentHandler;
 
 
         // Wire up parser - Just testing atm.
         try {
             MachineSpec machine_spec_handler;
+            machine_spec_handler.handler = &documentHandler;
             Elt elt;
             elt.handler = &machine_spec_handler;
             elt.parse_stream(profile);

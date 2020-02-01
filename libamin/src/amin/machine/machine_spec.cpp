@@ -12,6 +12,8 @@
 using Amin::Machine::Spec::Document;
 
 void Amin::Machine::MachineSpec::on_start_document() {
+    std::cout << "MACHINE_SPEC_ON_START" << std::endl;
+
     // Empty out the filters.
     this->filters.clear();
 
@@ -37,10 +39,29 @@ void Amin::Machine::MachineSpec::on_start_document() {
     }
 
     std::cout << "Current Uri: " << current_uri << std::endl;
-    Document documentHandler;
+
+    // Open machine spec
+    std::ifstream machine_spec_stream;
+    machine_spec_stream.open(current_uri, std::ios::in);
+
+    if (!machine_spec_stream) throw;
+
+
+    // Wire up parser - Just testing atm.
+    try {
+        Document documentHandler;
+        Xml::Sax::Base parser;
+        parser.handler = &documentHandler;
+        parser.parse_stream(machine_spec_stream);
+        this->filters = documentHandler.filters;
+    }
+    catch(const xmlpp::exception& ex)
+    {
+        std::cerr << "libxml++ exception: " << ex.what() << std::endl;
+    }
 
     // TODO wire this up in base.
-    try {
+    /**try {
         std::ifstream is(current_uri.c_str());
         if (!is)
             throw xmlpp::exception("Could not open file " + current_uri);
@@ -72,5 +93,5 @@ void Amin::Machine::MachineSpec::on_start_document() {
     {
         std::cerr << "libxml++ exception: " << ex.what() << std::endl;
         std::cerr << "Failed to process machine spec." << std::endl;
-    }
+    }*/
 }
