@@ -17,7 +17,7 @@ namespace Amin {
             ustring uri;
             std::map<std::string, Filter*> filters;
             void on_start_document() override;
-
+            void on_end_document() override;
         };
     }
 }

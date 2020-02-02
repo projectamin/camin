@@ -60,3 +60,7 @@ void Amin::Machine::MachineSpec::on_start_document() {
         std::cerr << "libxml++ exception: " << ex.what() << std::endl;
     }
 }
+
+void Amin::Machine::MachineSpec::on_end_document() {
+    std::cerr << "Machine spec end doc." << std::endl;
+}
